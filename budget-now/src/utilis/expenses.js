@@ -26,9 +26,15 @@ export const getExpensesByCategory = (expenses) => {
         health: 0,
     };
 
+    if (!expenses || !Array.isArray(expenses))
+        return categories;
+
     expenses.forEach((expense) => {
-        categories[expense.category] += expense.amount;
+        if (categories[expense.category] !== undefined) {
+            categories[expense.category] += expense.amount;
+        }
     });
+    return categories;
 };
 
 export const getTotalExpenses = (expenses) => {
