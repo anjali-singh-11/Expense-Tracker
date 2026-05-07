@@ -79,5 +79,5 @@ export const getExpensesByMonth = (expenses, numMonths = 6) => {
         if (result[monthYear] !== undefined) {
             result [monthYear] += expense.amount;
         }
-    })
+    });
 };
