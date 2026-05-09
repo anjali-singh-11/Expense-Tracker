@@ -5,7 +5,7 @@ import { BarChart, PieChart } from 'lucide-react';
 
 const ExpenseChart = () => {
 
-    const {expenses} = useExpenses();
+    const { expenses } = useExpenses();
     const [chartType, setChartType] = useState("pie");
 
     const chartData = getCharData(expenses);
@@ -46,4 +46,4 @@ const ExpenseChart = () => {
   );
 };
 
-export default ExpenseChart
+export default ExpenseChart;
