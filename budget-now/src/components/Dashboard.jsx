@@ -17,7 +17,7 @@ const Dashboard = () => {
           <ExpenseForm />
         </div>
       </div>
-      {/* exapense summary */}
+      <ExpenseList />
     </div>
   );
 };
