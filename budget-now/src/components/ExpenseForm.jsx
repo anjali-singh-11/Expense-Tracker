@@ -33,9 +33,17 @@ const ExpenseForm = () => {
 
         addExpense({
             description: description.trim(),
-            
-        })
+            amount: Number(amount),
+            category,
+            date,
+        });
 
+        toast.success("Expense added successfully");
+
+        setDescription("");
+        setAmount("");
+        setCategory("");
+        setDate(new Date().toISOString().split("T")[0]);
 
     } catch (error) {
         toast.error("Failed to add expense")
