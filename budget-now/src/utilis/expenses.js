@@ -41,7 +41,7 @@ export const getTotalExpenses = (expenses) => {
     return expenses.reduce((total, expense) => total + expense.amount, 0);
 };
 
-export const getCharData = (expenses) => {
+export const getChartData = (expenses) => {
     const expensesByCategory = getExpensesByCategory(expenses);
     return Object.entries(expensesByCategory)
     .filter(([_, value]) => value > 0)
@@ -65,7 +65,7 @@ export const getCategoryTextColor = (category) => {
 };
 
 export const getMonthName = (date) => {
-    return date.toLocateString("default", { month: "long" });
+    return date.toLocaleString("default", { month: "long" });
 };
 
 export const getExpensesByMonth = (expenses, numMonths = 6) => {

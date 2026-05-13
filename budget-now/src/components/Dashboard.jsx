@@ -1,18 +1,21 @@
 import React from 'react';
 import ExpenseSummary from './ExpenseSummary';
 import ExpenseChart from './ExpenseChart';
+import ExpenseForm from './ExpenseForm';
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className='space-y-8'>
       {/* exapense summary */}
       <ExpenseSummary />
 
       <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
-        <div>
+        <div className='lg:col-span-2'>
           <ExpenseChart />
         </div>
-        <div>{/* expense form */}</div>
+        <div>
+          <ExpenseForm />
+        </div>
       </div>
       {/* exapense summary */}
     </div>
