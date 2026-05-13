@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useExpenses } from "../context/ExpenseContext";
 import toast from "react-hot-toast";
+import { formatCurrency, formatDate, getCategoryTextColor } from "../utilis/expenses";
+import { Trash2 } from "lucide-react";
 
 const ExpenseList = () => {
   const { expenses, deleteExpense } = useExpenses();
@@ -101,19 +103,32 @@ const ExpenseList = () => {
                     className="hover:bg-gray-50 transition-colors"
                   >
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                      {FormatDate(expense.date)}
+                      {formatDate(expense.date)}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                       {expense.description}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm">
-                        <span>
-                            {
-                                
-                            }
+                        <span className={`${getCategoryTextColor(
+                            expense.category
+                        )} font-medium`}
+                        >
+                            {expense.category.charAt(0).toUpperCase +
+                                expense.category.slice(1)}
                         </span>
-                      {expense.description}
                     </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                      {formatCurrency(expense.amount)}
+                    </td>
+                    <tr>
+                        <td className="px-6 py-4 whitespace-nowrap text-right">
+                            <button onClick={() => handleDelete(expense.id)}
+                                className="text-red-500 hover:text-red-700 transition-colors"
+                                >
+                                <Trash2 size={18} />
+                            </button>
+                        </td>
+                    </tr>
                   </tr>
                 ))}
               </tbody>

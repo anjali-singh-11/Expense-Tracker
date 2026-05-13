@@ -70,14 +70,14 @@ const ExpensePieChart = ({ data }) => {
           ))}
         </Pie>
         <Tooltip content={<CustomTooltip />} />
-        <Legend
+        {/* <Legend
           layout="horizontal"
           verticalAlign="bottom"
           align="center"
           formatter={(value) => (
             <span className="text-sm font-medium">{value}</span>
           )}
-        />
+        /> */}
       </PieChart>
     </ResponsiveContainer>
   );

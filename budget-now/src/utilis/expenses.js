@@ -8,7 +8,7 @@ export const formatCurrency = (amount) => {
 
 export const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocateDateString("en-US", {
+    return date.toLocaleDateString("en-US", {
         year: "numeric",
         month: "short",
         day: "numeric",
