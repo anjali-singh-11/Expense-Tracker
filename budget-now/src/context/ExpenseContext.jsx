@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useReducer } from "react";
 const ExpenseContext = createContext();
 
 const initialState = {
-  expenses: [],
+  expenses: JSON.parse(localStorage.getItem("expenses")) || [],
   loading: false,
   error: null,
 };

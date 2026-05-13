@@ -2,6 +2,7 @@ import React from 'react';
 import ExpenseSummary from './ExpenseSummary';
 import ExpenseChart from './ExpenseChart';
 import ExpenseForm from './ExpenseForm';
+import ExpenseList from './ExpenseList';
 
 const Dashboard = () => {
   return (

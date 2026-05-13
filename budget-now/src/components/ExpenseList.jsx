@@ -36,17 +36,91 @@ const ExpenseList = () => {
         <h2 className="text-2xl font-semifold text-expense-dark">
           Expense History
         </h2>
-        <select value={categoryFilter} 
-        onChange={(e) => setCategoryFilter(e.target.value)}
-        className="px-3 py-1 rounded-md border bg-white border-gray-300 focus:outline-none focus:ring-2 focus:ring-expense-light focus:border-transparent"
+        <select
+          value={categoryFilter}
+          onChange={(e) => setCategoryFilter(e.target.value)}
+          className="px-3 py-1 rounded-md border bg-white border-gray-300 focus:outline-none focus:ring-2 focus:ring-expense-light focus:border-transparent"
         >
-            {
-                categoryOptions.map((option) => <option key={option.value} value={option.value}>
-                    {option.label}
-                </option>)
-            }
+          {categoryOptions.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
         </select>
       </div>
+
+      {sortedExpenses.length === 0 ? (
+        <div className="bg-white rounded-lg shadow-sm p-8 text-center text-gray-500">
+          <p className="mb-2">No expenses found</p>
+          {categoryFilter !== "all" && (
+            <p>Try changing the filter or add new expenses.</p>
+          )}
+        </div>
+      ) : (
+        <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Date
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Decription
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Category
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Amount
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Action
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {sortedExpenses.map((expense) => (
+                  <tr
+                    key={expense.id}
+                    className="hover:bg-gray-50 transition-colors"
+                  >
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      {FormatDate(expense.date)}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      {expense.description}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm">
+                        <span>
+                            {
+                                
+                            }
+                        </span>
+                      {expense.description}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
